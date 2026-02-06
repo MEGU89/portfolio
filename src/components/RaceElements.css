@@ -1,0 +1,619 @@
+/* ========================================
+   3D RACE ELEMENTS - Custom CSS Graphics
+   ======================================== */
+
+/* Container Styles */
+.race-signature {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  perspective: 1000px;
+  padding: 1rem 0;
+}
+
+/* ========================================
+   3D WINNING FLAG
+   ======================================== */
+.flag-3d-wrapper {
+  display: inline-block;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.flag-3d-wrapper:hover {
+  transform: scale(1.2);
+}
+
+.flag-3d-container {
+  position: relative;
+  width: 50px;
+  height: 60px;
+  transform-style: preserve-3d;
+  animation: flagWave 2s ease-in-out infinite;
+}
+
+.flag-pole {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 4px;
+  height: 60px;
+  background: linear-gradient(90deg, #8B4513 0%, #D2691E 50%, #8B4513 100%);
+  border-radius: 2px;
+  box-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.flag-pole::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -2px;
+  width: 8px;
+  height: 8px;
+  background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+  border-radius: 50%;
+  box-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+}
+
+.flag-fabric {
+  position: absolute;
+  left: 4px;
+  top: 0;
+  width: 40px;
+  height: 32px;
+  background: white;
+  transform-origin: left center;
+  animation: fabricWave 1.5s ease-in-out infinite;
+  box-shadow: 3px 3px 6px rgba(0,0,0,0.2);
+  overflow: hidden;
+  border-radius: 0 2px 2px 0;
+}
+
+.flag-pattern {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  width: 100%;
+  height: 100%;
+}
+
+.flag-square {
+  width: 100%;
+  height: 100%;
+}
+
+.flag-square.black {
+  background: linear-gradient(135deg, #1a1a1a 0%, #333 100%);
+}
+
+.flag-square.white {
+  background: linear-gradient(135deg, #fff 0%, #f0f0f0 100%);
+}
+
+@keyframes flagWave {
+  0%, 100% { transform: rotateY(0deg); }
+  50% { transform: rotateY(10deg); }
+}
+
+@keyframes fabricWave {
+  0%, 100% { 
+    transform: perspective(100px) rotateY(0deg) skewY(0deg);
+  }
+  25% { 
+    transform: perspective(100px) rotateY(5deg) skewY(2deg);
+  }
+  75% { 
+    transform: perspective(100px) rotateY(-3deg) skewY(-1deg);
+  }
+}
+
+/* ========================================
+   3D TURTLE
+   ======================================== */
+.turtle-3d-wrapper {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.turtle-3d-wrapper:hover {
+  transform: scale(1.2) rotateY(15deg);
+}
+
+.turtle-3d-wrapper:hover .turtle-3d-container {
+  animation-play-state: paused;
+}
+
+.turtle-3d-container {
+  position: relative;
+  width: 70px;
+  height: 50px;
+  transform-style: preserve-3d;
+  animation: turtleWalk 3s ease-in-out infinite;
+}
+
+.turtle-shell {
+  position: absolute;
+  top: 5px;
+  left: 15px;
+  width: 40px;
+  height: 30px;
+  background: linear-gradient(180deg, #2E8B57 0%, #228B22 30%, #006400 100%);
+  border-radius: 50% 50% 45% 45%;
+  transform: rotateX(-20deg);
+  box-shadow: 
+    inset -5px -5px 15px rgba(0,0,0,0.3),
+    inset 5px 5px 15px rgba(255,255,255,0.2),
+    0 8px 15px rgba(0,0,0,0.3);
+}
+
+.shell-pattern {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  right: 5px;
+  bottom: 8px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 2px;
+}
+
+.shell-hex {
+  background: linear-gradient(135deg, #3CB371 0%, #228B22 100%);
+  border-radius: 3px;
+  border: 1px solid rgba(0,100,0,0.5);
+}
+
+.turtle-head {
+  position: absolute;
+  top: 15px;
+  left: 0;
+  width: 18px;
+  height: 14px;
+  background: linear-gradient(180deg, #90EE90 0%, #3CB371 100%);
+  border-radius: 50% 60% 50% 50%;
+  transform: rotateY(-10deg);
+  box-shadow: 
+    inset -2px -2px 5px rgba(0,0,0,0.2),
+    2px 2px 4px rgba(0,0,0,0.2);
+  animation: headBob 2s ease-in-out infinite;
+}
+
+.turtle-eye {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: #1a1a1a;
+  border-radius: 50%;
+  top: 4px;
+}
+
+.turtle-eye.left { left: 3px; }
+.turtle-eye.right { left: 9px; }
+
+.turtle-eye::after {
+  content: '';
+  position: absolute;
+  width: 1.5px;
+  height: 1.5px;
+  background: white;
+  border-radius: 50%;
+  top: 0.5px;
+  left: 0.5px;
+}
+
+.turtle-leg {
+  position: absolute;
+  width: 12px;
+  height: 8px;
+  background: linear-gradient(180deg, #90EE90 0%, #3CB371 100%);
+  border-radius: 50%;
+  box-shadow: 1px 2px 3px rgba(0,0,0,0.2);
+}
+
+.turtle-leg.front-left {
+  top: 28px;
+  left: 12px;
+  animation: legMove 0.5s ease-in-out infinite;
+}
+
+.turtle-leg.front-right {
+  top: 28px;
+  left: 45px;
+  animation: legMove 0.5s ease-in-out infinite 0.25s;
+}
+
+.turtle-leg.back-left {
+  top: 32px;
+  left: 18px;
+  animation: legMove 0.5s ease-in-out infinite 0.25s;
+}
+
+.turtle-leg.back-right {
+  top: 32px;
+  left: 40px;
+  animation: legMove 0.5s ease-in-out infinite;
+}
+
+.turtle-tail {
+  position: absolute;
+  top: 25px;
+  right: 8px;
+  width: 8px;
+  height: 5px;
+  background: linear-gradient(90deg, #3CB371 0%, #90EE90 100%);
+  border-radius: 0 50% 50% 0;
+  transform-origin: left center;
+  animation: tailWag 1s ease-in-out infinite;
+}
+
+.turtle-shadow {
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 10px;
+  background: radial-gradient(ellipse, rgba(0,0,0,0.3) 0%, transparent 70%);
+  animation: shadowPulse 3s ease-in-out infinite;
+}
+
+@keyframes turtleWalk {
+  0%, 100% { transform: translateX(0) rotateZ(0deg); }
+  25% { transform: translateX(3px) rotateZ(-2deg); }
+  50% { transform: translateX(6px) rotateZ(0deg); }
+  75% { transform: translateX(3px) rotateZ(2deg); }
+}
+
+@keyframes headBob {
+  0%, 100% { transform: rotateY(-10deg) translateX(0); }
+  50% { transform: rotateY(-5deg) translateX(2px); }
+}
+
+@keyframes legMove {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(15deg); }
+}
+
+@keyframes tailWag {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(10deg); }
+}
+
+@keyframes shadowPulse {
+  0%, 100% { transform: translateX(-50%) scale(1); opacity: 0.3; }
+  50% { transform: translateX(-50%) scale(1.1); opacity: 0.2; }
+}
+
+/* ========================================
+   3D RABBIT
+   ======================================== */
+.rabbit-3d-wrapper {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.rabbit-3d-wrapper:hover {
+  transform: scale(1.2) translateY(-5px);
+}
+
+.rabbit-3d-wrapper:hover .rabbit-3d-container {
+  animation-play-state: paused;
+}
+
+.rabbit-3d-container {
+  position: relative;
+  width: 50px;
+  height: 65px;
+  transform-style: preserve-3d;
+  animation: rabbitHop 0.8s ease-in-out infinite;
+}
+
+.rabbit-body {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  width: 30px;
+  height: 25px;
+  background: linear-gradient(180deg, #fff 0%, #f5f5f5 50%, #e8e8e8 100%);
+  border-radius: 50% 50% 45% 45%;
+  box-shadow: 
+    inset -5px -5px 15px rgba(0,0,0,0.1),
+    inset 5px 5px 10px rgba(255,255,255,0.8),
+    3px 5px 10px rgba(0,0,0,0.2);
+}
+
+.rabbit-head {
+  position: absolute;
+  top: 20px;
+  left: 5px;
+  width: 28px;
+  height: 24px;
+  background: linear-gradient(180deg, #fff 0%, #f8f8f8 100%);
+  border-radius: 50%;
+  box-shadow: 
+    inset -3px -3px 8px rgba(0,0,0,0.1),
+    inset 3px 3px 8px rgba(255,255,255,0.9),
+    2px 3px 6px rgba(0,0,0,0.15);
+}
+
+.rabbit-ear {
+  position: absolute;
+  width: 8px;
+  height: 28px;
+  background: linear-gradient(90deg, #fff 0%, #f0f0f0 50%, #fff 100%);
+  border-radius: 50% 50% 40% 40%;
+  top: -25px;
+  box-shadow: 
+    inset -2px 0 5px rgba(0,0,0,0.1),
+    1px 2px 4px rgba(0,0,0,0.15);
+}
+
+.rabbit-ear::after {
+  content: '';
+  position: absolute;
+  width: 4px;
+  height: 20px;
+  background: linear-gradient(180deg, #FFB6C1 0%, #FFC0CB 100%);
+  border-radius: 50%;
+  top: 4px;
+  left: 2px;
+}
+
+.rabbit-ear.left {
+  left: 5px;
+  transform: rotate(-10deg);
+  animation: earWiggle 1.5s ease-in-out infinite;
+}
+
+.rabbit-ear.right {
+  right: 5px;
+  transform: rotate(10deg);
+  animation: earWiggle 1.5s ease-in-out infinite 0.2s;
+}
+
+.rabbit-face {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.rabbit-eye {
+  position: absolute;
+  width: 6px;
+  height: 8px;
+  background: linear-gradient(180deg, #2c2c2c 0%, #1a1a1a 100%);
+  border-radius: 50%;
+  top: 8px;
+}
+
+.rabbit-eye.left { left: 5px; }
+.rabbit-eye.right { right: 5px; }
+
+.rabbit-eye::after {
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: white;
+  border-radius: 50%;
+  top: 1px;
+  left: 1px;
+}
+
+.rabbit-nose {
+  position: absolute;
+  bottom: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 5px;
+  background: linear-gradient(180deg, #FFB6C1 0%, #FF69B4 100%);
+  border-radius: 50% 50% 40% 40%;
+  animation: noseWiggle 0.5s ease-in-out infinite;
+}
+
+.rabbit-whisker {
+  position: absolute;
+  bottom: 8px;
+  width: 12px;
+  height: 1px;
+  background: #ccc;
+}
+
+.rabbit-whisker.left {
+  left: -8px;
+  transform: rotate(-10deg);
+}
+
+.rabbit-whisker.right {
+  right: -8px;
+  transform: rotate(10deg);
+}
+
+.rabbit-whisker::before,
+.rabbit-whisker::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 1px;
+  background: #ccc;
+  left: 0;
+}
+
+.rabbit-whisker::before { top: -3px; transform: rotate(15deg); }
+.rabbit-whisker::after { top: 3px; transform: rotate(-15deg); }
+
+.rabbit-whisker.right::before,
+.rabbit-whisker.right::after {
+  left: auto;
+  right: 0;
+}
+
+.rabbit-foot {
+  position: absolute;
+  bottom: 0;
+  width: 14px;
+  height: 10px;
+  background: linear-gradient(180deg, #f5f5f5 0%, #e0e0e0 100%);
+  border-radius: 50% 50% 45% 45%;
+  box-shadow: 1px 2px 3px rgba(0,0,0,0.2);
+}
+
+.rabbit-foot.left {
+  left: 8px;
+  animation: footKick 0.8s ease-in-out infinite;
+}
+
+.rabbit-foot.right {
+  right: 8px;
+  animation: footKick 0.8s ease-in-out infinite 0.1s;
+}
+
+.rabbit-tail {
+  position: absolute;
+  bottom: 15px;
+  right: 3px;
+  width: 12px;
+  height: 12px;
+  background: radial-gradient(circle, #fff 0%, #f0f0f0 70%, #e8e8e8 100%);
+  border-radius: 50%;
+  box-shadow: 
+    inset -2px -2px 5px rgba(0,0,0,0.1),
+    2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.rabbit-shadow {
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 35px;
+  height: 8px;
+  background: radial-gradient(ellipse, rgba(0,0,0,0.25) 0%, transparent 70%);
+  animation: rabbitShadow 0.8s ease-in-out infinite;
+}
+
+@keyframes rabbitHop {
+  0%, 100% { 
+    transform: translateY(0) rotate(0deg);
+  }
+  30% { 
+    transform: translateY(-20px) rotate(-5deg);
+  }
+  50% { 
+    transform: translateY(-25px) rotate(0deg);
+  }
+  70% { 
+    transform: translateY(-15px) rotate(5deg);
+  }
+}
+
+@keyframes earWiggle {
+  0%, 100% { transform: rotate(-10deg); }
+  50% { transform: rotate(-5deg); }
+}
+
+.rabbit-ear.right {
+  animation-name: earWiggleRight;
+}
+
+@keyframes earWiggleRight {
+  0%, 100% { transform: rotate(10deg); }
+  50% { transform: rotate(5deg); }
+}
+
+@keyframes noseWiggle {
+  0%, 100% { transform: translateX(-50%) scale(1); }
+  50% { transform: translateX(-50%) scale(1.1); }
+}
+
+@keyframes footKick {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(-20deg) translateY(5px); }
+}
+
+@keyframes rabbitShadow {
+  0%, 100% { 
+    transform: translateX(-50%) scale(1);
+    opacity: 0.25;
+  }
+  50% { 
+    transform: translateX(-50%) scale(0.6);
+    opacity: 0.1;
+  }
+}
+
+/* ========================================
+   3D RACE TRACK
+   ======================================== */
+.race-track-3d {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 10px;
+  perspective: 500px;
+}
+
+.track-dot-3d {
+  width: 8px;
+  height: 8px;
+  background: linear-gradient(135deg, #d1d5db 0%, #9ca3af 50%, #6b7280 100%);
+  border-radius: 50%;
+  box-shadow: 
+    inset -1px -1px 3px rgba(0,0,0,0.2),
+    inset 1px 1px 2px rgba(255,255,255,0.8),
+    0 2px 4px rgba(0,0,0,0.15);
+  animation: dotBounce 2s ease-in-out infinite;
+}
+
+@keyframes dotBounce {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateY(-5px) scale(1.2);
+    opacity: 1;
+  }
+}
+
+/* Stagger the dots animation */
+.track-dot-3d:nth-child(1) { animation-delay: 0s; }
+.track-dot-3d:nth-child(2) { animation-delay: 0.1s; }
+.track-dot-3d:nth-child(3) { animation-delay: 0.2s; }
+.track-dot-3d:nth-child(4) { animation-delay: 0.3s; }
+.track-dot-3d:nth-child(5) { animation-delay: 0.4s; }
+.track-dot-3d:nth-child(6) { animation-delay: 0.5s; }
+.track-dot-3d:nth-child(7) { animation-delay: 0.6s; }
+.track-dot-3d:nth-child(8) { animation-delay: 0.7s; }
+.track-dot-3d:nth-child(9) { animation-delay: 0.8s; }
+.track-dot-3d:nth-child(10) { animation-delay: 0.9s; }
+.track-dot-3d:nth-child(11) { animation-delay: 1.0s; }
+.track-dot-3d:nth-child(12) { animation-delay: 1.1s; }
+.track-dot-3d:nth-child(13) { animation-delay: 1.2s; }
+.track-dot-3d:nth-child(14) { animation-delay: 1.3s; }
+.track-dot-3d:nth-child(15) { animation-delay: 1.4s; }
+
+/* ========================================
+   RESPONSIVE ADJUSTMENTS
+   ======================================== */
+@media (max-width: 640px) {
+  .race-signature {
+    transform: scale(0.8);
+  }
+  
+  .race-track-3d {
+    gap: 5px;
+  }
+  
+  .track-dot-3d {
+    width: 6px;
+    height: 6px;
+  }
+}
