@@ -1,4 +1,6 @@
 const Projects = () => {
+  const baseUrl = import.meta.env.BASE_URL
+  
   const featuredProjects = [
     {
       title: 'PulseBank – Blood Donation Platform',
@@ -6,7 +8,7 @@ const Projects = () => {
       tech: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'Socket.io'],
       github: 'https://github.com/MEGU89/PulseBank---',
       live: '#',
-      images: ['/Pulsbank1.jpeg', '/pulsebank2.jpeg', '/plusebank3.jpeg', '/pulsebank4.jpeg'],
+      images: [`${baseUrl}Pulsbank1.jpeg`, `${baseUrl}pulsebank2.jpeg`, `${baseUrl}plusebank3.jpeg`, `${baseUrl}pulsebank4.jpeg`],
       date: 'Sep 2025',
     },
     {
@@ -15,7 +17,7 @@ const Projects = () => {
       tech: ['React.js', 'JavaScript', 'Node.js', 'MongoDB'],
       github: 'https://github.com/MEGU89/CampusVault',
       live: '#',
-      images: ['/campusvault.png'],
+      images: [`${baseUrl}campusvault.png`],
       date: 'Mar 2025',
     },
     {
@@ -24,7 +26,7 @@ const Projects = () => {
       tech: ['React.js', 'JavaScript', 'MongoDB'],
       github: 'https://github.com/MEGU89/College-Leave-ERP',
       live: '#',
-      images: ['/leave-system.png'],
+      images: [`${baseUrl}leave-system.png`],
       date: 'Sep 2024',
     },
   ]

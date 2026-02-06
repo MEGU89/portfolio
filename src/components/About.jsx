@@ -20,7 +20,7 @@ const About = () => {
               <div className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-72 md:h-72 lg:w-80 lg:h-80 xl:w-96 xl:h-96 rounded-full p-1 bg-white shadow-2xl">
                 <div className="w-full h-full rounded-full overflow-hidden">
                   <img 
-                    src="/avatar3d.png" 
+                    src={`${import.meta.env.BASE_URL}avatar3d.png`}
                     alt="Harshit Singh - Developer" 
                     className="w-full h-full object-cover object-top rounded-full transition-transform duration-500 group-hover:scale-105"
                   />

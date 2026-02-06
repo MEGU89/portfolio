@@ -7,7 +7,7 @@ const Education = () => {
       period: 'Sep 2024 – May 2026',
       grade: 'Pursuing',
       position: 'left',
-      image: '/kiet logo.png',
+      image: `${import.meta.env.BASE_URL}kiet logo.png`,
     },
     {
       degree: 'Bachelor of Computer Applications',
@@ -16,7 +16,7 @@ const Education = () => {
       period: 'Aug 2020 – Sep 2023',
       grade: 'Percentage: 70.06%',
       position: 'right',
-      image: '/bca logo.png',
+      image: `${import.meta.env.BASE_URL}bca logo.png`,
     },
     {
       degree: 'Intermediate',
@@ -25,7 +25,7 @@ const Education = () => {
       period: 'Apr 2019 – Jun 2020',
       grade: 'Percentage: 77.80%',
       position: 'left',
-      image: '/12th school logo.png',
+      image: `${import.meta.env.BASE_URL}12th school logo.png`,
     },
     {
       degree: 'High School',
@@ -34,7 +34,7 @@ const Education = () => {
       period: 'Apr 2017 – Jun 2018',
       grade: 'Percentage: 77.67%',
       position: 'right',
-      image: '/ops 10 logo.png',
+      image: `${import.meta.env.BASE_URL}ops 10 logo.png`,
     },
   ]
 

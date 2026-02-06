@@ -19,7 +19,7 @@ const Navbar = () => {
           <a href="#" className="flex items-center gap-2 px-2 py-1 border border-gray-300 rounded-full hover:border-teal-500 hover:shadow-lg transition-all group">
             <div className="w-8 h-8 rounded-full overflow-hidden bg-gradient-to-r from-teal-400 to-cyan-400 p-0.5">
               <img 
-                src="/HII.png" 
+                src={`${import.meta.env.BASE_URL}HII.png`}
                 alt="HS" 
                 className="w-full h-full rounded-full object-cover bg-white animate-wave-logo"
               />
